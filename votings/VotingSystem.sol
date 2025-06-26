@@ -43,6 +43,14 @@ contract VotingSystem {
         return (c.name, c.voteCount);
     }
 
+    function getTotalCandidates() public view returns (uint) {
+        return candidates.length;
+    }
+
+    function hasUserVoted(address voter) public view returns (bool) {
+        return hasVoted[voter];
+    }
+
     modifier onlyOwner() {
         require(msg.sender == owner, "Only owner can perform this action.");
         _;
